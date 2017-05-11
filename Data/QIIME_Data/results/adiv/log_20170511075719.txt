@@ -1,0 +1,66 @@
+Logging started at 07:57:19 on 11 May 2017
+QIIME version: 1.9.1
+
+qiime_config values:
+pick_otus_reference_seqs_fp	/nfs1/Teaching/ACTF/actf_data/packages/miniconda3/envs/qiime1/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
+sc_queue	all.q
+pynast_template_alignment_fp	/nfs1/Teaching/ACTF/actf_data/packages/miniconda3/envs/qiime1/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set_aligned/85_otus.pynast.fasta
+cluster_jobs_fp	start_parallel_jobs.py
+assign_taxonomy_reference_seqs_fp	/nfs1/Teaching/ACTF/actf_data/packages/miniconda3/envs/qiime1/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
+torque_queue	friendlyq
+jobs_to_start	1
+denoiser_min_per_core	50
+assign_taxonomy_id_to_taxonomy_fp	/nfs1/Teaching/ACTF/actf_data/packages/miniconda3/envs/qiime1/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt
+temp_dir	/data/
+blastall_fp	blastall
+seconds_to_sleep	1
+
+parameter file values:
+parallel:jobs_to_start	1
+
+Input file md5 sums:
+./input/otu_table.biom: 4c276b32333c399011e96910a09464d6
+./input/map.txt: c11639ff5f46091b2d1e928bf0b42ed2
+./input/tree.newick: ce55124efa654373f84957c89151d554
+
+Executing commands.
+
+# Alpha rarefaction command 
+multiple_rarefactions.py -i ./input/otu_table.biom -m 10 -x 300 -s 29 -o ./results/adiv//rarefaction/ 
+
+Stdout:
+
+Stderr:
+
+# Alpha diversity on rarefied OTU tables command 
+alpha_diversity.py -i ./results/adiv//rarefaction/ -o ./results/adiv//alpha_div/  -t ./input/tree.newick
+
+Stdout:
+
+Stderr:
+
+# Collate alpha command 
+collate_alpha.py -i ./results/adiv//alpha_div/ -o ./results/adiv//alpha_div_collated/ 
+
+Stdout:
+
+Stderr:
+
+# Removing intermediate files command 
+rm -r ./results/adiv//rarefaction/ ./results/adiv//alpha_div/
+
+Stdout:
+
+Stderr:
+
+# Rarefaction plot: All metrics command 
+make_rarefaction_plots.py -i ./results/adiv//alpha_div_collated/ -m ./input/map.txt -o ./results/adiv//alpha_rarefaction_plots/ 
+
+Stdout:
+
+Stderr:
+/nfs1/Teaching/ACTF/actf_data/packages/miniconda3/envs/qiime1/lib/python2.7/site-packages/matplotlib/collections.py:590: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if self._edgecolors == str('face'):
+
+
+Logging stopped at 08:44:29 on 11 May 2017

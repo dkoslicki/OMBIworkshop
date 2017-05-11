@@ -1,0 +1,24 @@
+#PREFILTERING
+#NOTE: these are selected for clarity and illustration - don't
+#use this subset for science!  Use the openly available full GCMP dataset instead.#(See the Vega Thurber lab website)
+
+#from the raw folder
+filter_samples_from_otu_table.py -i otu_table_gcmp_workshop.biom -o otu_table_workshop_simple.py --sample_id_fp map_gcmp_workshop_simple.txt 
+
+#Rarefy to 300 seqs/sample for speed
+single_rarefaction.py -i otu_table.biom -o otu_table_300.biom -d 300 
+
+#WORKSHOP COMMANDS
+
+#Perform beta-diversity-analysis
+
+beta_diversity_through_plots.py -i ./input/otu_table.biom -o ./results/bdiv250 -e 250 -m ./input/map.txt -t ./input/tree.newick -f
+
+#Compare categories
+compare_categories.py -i ./results/bdiv250/weighted_unifrac_dm.txt --method adonis -m ./input/map.txt -o ./adonis_results -c growth_rate,complex_robust,host_genus_id,functional_group_sensu_darling
+
+#Alpha rarefaction
+alpha_rarefaction.py -i ./input/otu_table.biom -o ./results/adiv/ -m ./input/map.txt -f -t ./input/tree.newick 
+
+#Summarize taxa through plots
+summarize_taxa_through_plots.py -i ./input/otu_table.biom -o ./results/taxa_summary -m ./map.txt -c growth_rate 

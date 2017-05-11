@@ -1,0 +1,364 @@
+<!--
+*Summary of Emperor's Information*
+Command executed on May 11, 2017 at 13:45:21
+Emperor Version: 0.9.51
+QIIME Version: 0.9.51
+HostName: crick.cgrb.oregonstate.local
+Metadata: /ACTF/mbt_s17/home/koslickd_mbt_s17/OMBIworkshop/Data/QIIME_Data/input/map.txt
+Coordinates: /ACTF/mbt_s17/home/koslickd_mbt_s17/OMBIworkshop/Data/QIIME_Data/results/bdiv/weighted_unifrac_pc.txt
+Command: /ACTF/actf_data/packages/miniconda3/envs//qiime1/bin/make_emperor.py -i results/bdiv/weighted_unifrac_pc.txt -o results/bdiv/weighted_unifrac_emperor_pcoa_plot/ -m input/map.txt
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Emperor</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="emperor_required_resources/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Style files -->
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/emperor/css/emperor.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/jquery-ui2.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/colorPicker.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/spectrum.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/d3.parcoords.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/chosen.min.css">
+
+    <!-- Emperor logo for the splash window -->
+    <table id="logotable" style="vertical-align:middle;text-align:center;height:100%;width:100%;margin:0;padding:0;border:0;">
+        <tr><td><img src="emperor_required_resources/img/emperor.png" alt="Emperor" id="logo"/></td></tr>
+    </table>
+
+    <!-- JavaScript code -->
+
+    <!-- jQuery and other plugins -->
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery.colorPicker.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/spectrum.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/chosen.jquery.min.js"></script>
+
+    <!-- D3.js for the parallel coordinates plugin -->
+    <script type="text/javascript" src="emperor_required_resources/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.parcoords.js"></script>
+
+    <!-- THREE.js and plugins for screenshots -->
+    <script type="text/javascript" src="emperor_required_resources/js/three.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/js/Detector.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/js/OrbitControls.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/js/ColorConverter.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/js/SVGRenderer.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/THREEx.screenshot.js"></script>
+
+    <!-- General utilities (underscore.js and FileSaver.js) -->
+    <script type="text/javascript" src="emperor_required_resources/js/underscore-min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/chroma.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/FileSaver.min.js"></script>
+
+    <!-- Emperor library code -->
+    <script type="text/javascript" src="emperor_required_resources/emperor/js/animate.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/emperor/js/draw.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/emperor/js/emperor.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/emperor/js/trajectory.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/emperor/js/ui.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/emperor/js/util.js"></script>
+
+    <script type="text/javascript">
+
+var g_mappingFileHeaders = ['SampleID','LinkerPrimerSequence','ReversePrimer','runID','date','reef_name','latitude','longitude','sample_type','host_name','host_genus_id','host_species_id','BiologicalMatter','oz_disease_mean','host_clade_sensu_fukami','complex_robust','family','functional_group_sensu_darling','growth_rate','Sexual system','site_name','full_location'];
+var g_mappingFileData = { 'E3.7.Pav.vari.1.20150124.T': ['E3.7.Pav.vari.1.20150124.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','1/24/15','Trawler','-14.686768','145.4665','Coral Tissue','Pavona varians','Pavona','varians','Coral Tissue','0.090909091','VII','complex','Agariciidae','Stress-tolerant','slow','gonochore','Great Barrier Reef - Lizard Island Sector','Indo-Pacific;Pacific;Coral Sea;Australia;NE;Great Barrier Reef - Lizard Island Sector;Trawler'],'E1.5.Gal.astr.1.20140728.T': ['E1.5.Gal.astr.1.20140728.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','ALVCP','7/28/14','Big Vickie','-14.68463','145.44175','Coral Tissue','Galaxea astreata','Galaxea','astreata','Coral Tissue','0.258673969','V','complex','Euphylliidae','Stress-tolerant','slow','gonochore','Great Barrier Reef - Lizard Island Sector','Indo-Pacific;Pacific;Coral Sea;Australia;NE;Great Barrier Reef - Lizard Island Sector;Big Vickie'],'E3.6.Acr.hyac.4.20150106.T': ['E3.6.Acr.hyac.4.20150106.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','1/6/15','Little Kelso','-18.465767','146.991483','Coral Tissue','Acropora hyacinthus','Acropora','hyacinthus','Coral Tissue','1.578324463','VI','complex','Acroporidae','Competitive','fast','hermaphrodite','Great Barrier Reef - Central Sector','Indo-Pacific;Pacific;Coral Sea;Australia;E;Great Barrier Reef - Central Sector;Little Kelso'],'E7.10.Poc.dami.2.20150621.T': ['E7.10.Poc.dami.2.20150621.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/21/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Pocillopora damicornis','Pocillopora','damicornis','Coral Tissue','3.190353051','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E1.7.Pav.vari.1.20140805.T': ['E1.7.Pav.vari.1.20140805.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','ALVCP','8/5/14','Trawler','-14.68344','145.46554','Coral Tissue','Pavona varians','Pavona','varians','Coral Tissue','0.090909091','VII','complex','Agariciidae','Stress-tolerant','slow','gonochore','Great Barrier Reef - Lizard Island Sector','Indo-Pacific;Pacific;Coral Sea;Australia;NE;Great Barrier Reef - Lizard Island Sector;Trawler'],'E10.Ser.cali.3.20150627.T': ['E10.Ser.cali.3.20150627.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/27/15','North Bay','-31.52135','159.0467333','Coral Tissue','Seriatopora hystrix','Seriatopora','hystrix','Coral Tissue','3.135283206','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Lord Howe Island','Indo-Pacific;Pacific;Tasman Sea;Australia;SE;Lord Howe Island;North Bay'],'E3.5.Gal.astr.1.20150124.T': ['E3.5.Gal.astr.1.20150124.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','1/24/15','Trawler','-14.686768','145.4665','Coral Tissue','Galaxea astreata','Galaxea','astreata','Coral Tissue','0.258673969','V','complex','Euphylliidae','Stress-tolerant','slow','gonochore','Great Barrier Reef - Lizard Island Sector','Indo-Pacific;Pacific;Coral Sea;Australia;NE;Great Barrier Reef - Lizard Island Sector;Trawler'],'E1.5.Gal.astr.1.20140905.T': ['E1.5.Gal.astr.1.20140905.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','ALVCP','9/5/14','Broadhurst','-18.86528','147.693611','Coral Tissue','Galaxea astreata','Galaxea','astreata','Coral Tissue','0.258673969','V','complex','Euphylliidae','Stress-tolerant','slow','gonochore','Great Barrier Reef - Central Sector','Indo-Pacific;Pacific;Coral Sea;Australia;E;Great Barrier Reef - Central Sector;Broadhurst'],'E7.10.Poc.dami.3.20150621.T': ['E7.10.Poc.dami.3.20150621.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/21/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Pocillopora damicornis','Pocillopora','damicornis','Coral Tissue','3.190353051','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E10.Poc.dami.2.20150628.T': ['E10.Poc.dami.2.20150628.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/28/15','North Bay','-31.52135','159.0467333','Coral Tissue','Pocillopora damicornis','Pocillopora','damicornis','Coral Tissue','3.190353051','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Lord Howe Island','Indo-Pacific;Pacific;Tasman Sea;Australia;SE;Lord Howe Island;North Bay'],'E7.6.Acr.hyac.3.20150622.T': ['E7.6.Acr.hyac.3.20150622.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','ALVCP','6/22/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Acropora hyacinthus','Acropora','hyacinthus','Coral Tissue','1.578324463','VI','complex','Acroporidae','Competitive','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E7.10.Ser.cali.2.20150622.T': ['E7.10.Ser.cali.2.20150622.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/22/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Seriatopora hystrix','Seriatopora','hystrix','Coral Tissue','3.135283206','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E7.6.Acr.hyac.1.20150622.T': ['E7.6.Acr.hyac.1.20150622.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/22/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Acropora hyacinthus','Acropora','hyacinthus','Coral Tissue','1.578324463','VI','complex','Acroporidae','Competitive','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E7.10.Poc.dami.1.20150621.T': ['E7.10.Poc.dami.1.20150621.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/21/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Pocillopora damicornis','Pocillopora','damicornis','Coral Tissue','3.190353051','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E7.7.Pav.vari.2.20150622.T': ['E7.7.Pav.vari.2.20150622.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/22/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Pavona varians','Pavona','varians','Coral Tissue','0.090909091','VII','complex','Agariciidae','Stress-tolerant','slow','gonochore','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E3.6.Acr.hyac.4.20150105.T': ['E3.6.Acr.hyac.4.20150105.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','1/5/15','Fork','-18.611','147.57515','Coral Tissue','Acropora hyacinthus','Acropora','hyacinthus','Coral Tissue','1.578324463','VI','complex','Acroporidae','Competitive','fast','hermaphrodite','Great Barrier Reef - Central Sector','Indo-Pacific;Pacific;Coral Sea;Australia;E;Great Barrier Reef - Central Sector;Fork'],'E7.10.Ser.cali.3.20150622.T': ['E7.10.Ser.cali.3.20150622.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/22/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Seriatopora hystrix','Seriatopora','hystrix','Coral Tissue','3.135283206','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E7.6.Acr.hyac.2.20150622.T': ['E7.6.Acr.hyac.2.20150622.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/22/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Acropora hyacinthus','Acropora','hyacinthus','Coral Tissue','1.578324463','VI','complex','Acroporidae','Competitive','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E7.10.Ser.cali.1.20150622.T': ['E7.10.Ser.cali.1.20150622.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/22/15','Bills Bay','-23.140369','113.769166','Coral Tissue','Seriatopora hystrix','Seriatopora','hystrix','Coral Tissue','3.135283206','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Ningaloo','Indo-Pacific;Indian;Eastern Indian;Australia;W;Ningaloo;Bills Bay'],'E3.7.Pav.vari.2.20150124.T': ['E3.7.Pav.vari.2.20150124.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','1/24/15','Trawler','-14.686768','145.4665','Coral Tissue','Pavona varians','Pavona','varians','Coral Tissue','0.090909091','VII','complex','Agariciidae','Stress-tolerant','slow','gonochore','Great Barrier Reef - Lizard Island Sector','Indo-Pacific;Pacific;Coral Sea;Australia;NE;Great Barrier Reef - Lizard Island Sector;Trawler'],'E10.Poc.dami.1.20150628.T': ['E10.Poc.dami.1.20150628.T','AGATCGGAAGAGCACACGTCTGAACTCCAGTCA','AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT','AN5UL','6/28/15','North Bay','-31.52135','159.0467333','Coral Tissue','Pocillopora damicornis','Pocillopora','damicornis','Coral Tissue','3.190353051','X','robust','Pocilloporidae','Weedy','fast','hermaphrodite','Lord Howe Island','Indo-Pacific;Pacific;Tasman Sea;Australia;SE;Lord Howe Island;North Bay'] };
+var g_animatableMappingFileHeaders = ['latitude','longitude','oz_disease_mean'];
+
+var g_spherePositions = new Array();
+g_spherePositions['E3.7.Pav.vari.1.20150124.T'] = { 'name': 'E3.7.Pav.vari.1.20150124.T', 'color': 0, 'x': -0.199283, 'y': 0.068974, 'z': 0.065081, 'P1': -0.199283, 'P2': 0.068974, 'P3': 0.065081, 'P4': -0.081023, 'P5': 0.041963, 'P6': -0.038490, 'P7': 0.071892, 'P8': 0.000475, 'P9': 0.089008, 'P10': 0.016572 };
+g_spherePositions['E3.5.Gal.astr.1.20150124.T'] = { 'name': 'E3.5.Gal.astr.1.20150124.T', 'color': 0, 'x': -0.135178, 'y': 0.170062, 'z': 0.128688, 'P1': -0.135178, 'P2': 0.170062, 'P3': 0.128688, 'P4': -0.054880, 'P5': 0.146417, 'P6': -0.148928, 'P7': 0.063051, 'P8': 0.014144, 'P9': 0.098545, 'P10': -0.164326 };
+g_spherePositions['E1.5.Gal.astr.1.20140728.T'] = { 'name': 'E1.5.Gal.astr.1.20140728.T', 'color': 0, 'x': -0.283383, 'y': -0.181781, 'z': -0.100252, 'P1': -0.283383, 'P2': -0.181781, 'P3': -0.100252, 'P4': -0.064048, 'P5': -0.231853, 'P6': -0.123734, 'P7': -0.147118, 'P8': -0.053197, 'P9': -0.041981, 'P10': -0.061426 };
+g_spherePositions['E7.6.Acr.hyac.3.20150622.T'] = { 'name': 'E7.6.Acr.hyac.3.20150622.T', 'color': 0, 'x': 0.060130, 'y': 0.251151, 'z': 0.005865, 'P1': 0.060130, 'P2': 0.251151, 'P3': 0.005865, 'P4': -0.080980, 'P5': -0.067289, 'P6': 0.033576, 'P7': 0.032645, 'P8': -0.037169, 'P9': 0.070687, 'P10': -0.032806 };
+g_spherePositions['E3.7.Pav.vari.2.20150124.T'] = { 'name': 'E3.7.Pav.vari.2.20150124.T', 'color': 0, 'x': -0.320776, 'y': -0.033172, 'z': 0.193726, 'P1': -0.320776, 'P2': -0.033172, 'P3': 0.193726, 'P4': 0.096508, 'P5': 0.166737, 'P6': 0.183058, 'P7': 0.007795, 'P8': -0.086494, 'P9': -0.066007, 'P10': 0.037412 };
+g_spherePositions['E1.7.Pav.vari.1.20140805.T'] = { 'name': 'E1.7.Pav.vari.1.20140805.T', 'color': 0, 'x': -0.370207, 'y': -0.180370, 'z': 0.005909, 'P1': -0.370207, 'P2': -0.180370, 'P3': 0.005909, 'P4': 0.011104, 'P5': -0.015974, 'P6': 0.076694, 'P7': -0.103282, 'P8': -0.155985, 'P9': 0.030055, 'P10': -0.040398 };
+g_spherePositions['E7.7.Pav.vari.2.20150622.T'] = { 'name': 'E7.7.Pav.vari.2.20150622.T', 'color': 0, 'x': -0.346671, 'y': -0.157271, 'z': 0.075652, 'P1': -0.346671, 'P2': -0.157271, 'P3': 0.075652, 'P4': 0.104018, 'P5': -0.052724, 'P6': 0.032416, 'P7': 0.082165, 'P8': 0.139963, 'P9': -0.098262, 'P10': -0.083371 };
+g_spherePositions['E3.6.Acr.hyac.4.20150105.T'] = { 'name': 'E3.6.Acr.hyac.4.20150105.T', 'color': 0, 'x': 0.338147, 'y': -0.156969, 'z': 0.127640, 'P1': 0.338147, 'P2': -0.156969, 'P3': 0.127640, 'P4': 0.064670, 'P5': 0.004465, 'P6': 0.036772, 'P7': -0.045302, 'P8': 0.019543, 'P9': -0.023919, 'P10': 0.000398 };
+g_spherePositions['E1.5.Gal.astr.1.20140905.T'] = { 'name': 'E1.5.Gal.astr.1.20140905.T', 'color': 0, 'x': -0.340262, 'y': -0.180212, 'z': 0.029545, 'P1': -0.340262, 'P2': -0.180212, 'P3': 0.029545, 'P4': 0.006828, 'P5': -0.072605, 'P6': -0.047885, 'P7': 0.062709, 'P8': 0.128219, 'P9': 0.102939, 'P10': 0.195856 };
+g_spherePositions['E3.6.Acr.hyac.4.20150106.T'] = { 'name': 'E3.6.Acr.hyac.4.20150106.T', 'color': 0, 'x': 0.339521, 'y': -0.186142, 'z': 0.118246, 'P1': 0.339521, 'P2': -0.186142, 'P3': 0.118246, 'P4': 0.096212, 'P5': -0.093124, 'P6': 0.073056, 'P7': 0.075398, 'P8': 0.024710, 'P9': -0.009949, 'P10': -0.046253 };
+g_spherePositions['E7.10.Ser.cali.1.20150622.T'] = { 'name': 'E7.10.Ser.cali.1.20150622.T', 'color': 0, 'x': 0.078697, 'y': 0.425514, 'z': 0.030610, 'P1': 0.078697, 'P2': 0.425514, 'P3': 0.030610, 'P4': -0.133396, 'P5': -0.061478, 'P6': 0.165592, 'P7': -0.138008, 'P8': 0.121117, 'P9': 0.079706, 'P10': 0.000237 };
+g_spherePositions['E10.Ser.cali.3.20150627.T'] = { 'name': 'E10.Ser.cali.3.20150627.T', 'color': 0, 'x': -0.002835, 'y': 0.143372, 'z': 0.097783, 'P1': -0.002835, 'P2': 0.143372, 'P3': 0.097783, 'P4': -0.013217, 'P5': 0.060822, 'P6': -0.109483, 'P7': -0.070895, 'P8': 0.116709, 'P9': -0.137829, 'P10': 0.015991 };
+g_spherePositions['E7.6.Acr.hyac.1.20150622.T'] = { 'name': 'E7.6.Acr.hyac.1.20150622.T', 'color': 0, 'x': 0.267717, 'y': -0.039152, 'z': 0.136316, 'P1': 0.267717, 'P2': -0.039152, 'P3': 0.136316, 'P4': 0.024703, 'P5': 0.099088, 'P6': -0.122456, 'P7': -0.075620, 'P8': -0.008673, 'P9': -0.046374, 'P10': 0.019642 };
+g_spherePositions['E7.6.Acr.hyac.2.20150622.T'] = { 'name': 'E7.6.Acr.hyac.2.20150622.T', 'color': 0, 'x': 0.309931, 'y': -0.245426, 'z': 0.049906, 'P1': 0.309931, 'P2': -0.245426, 'P3': 0.049906, 'P4': 0.023054, 'P5': -0.107153, 'P6': 0.039927, 'P7': 0.082869, 'P8': -0.022982, 'P9': 0.085959, 'P10': -0.065071 };
+g_spherePositions['E7.10.Poc.dami.3.20150621.T'] = { 'name': 'E7.10.Poc.dami.3.20150621.T', 'color': 0, 'x': 0.022927, 'y': -0.132698, 'z': -0.233303, 'P1': 0.022927, 'P2': -0.132698, 'P3': -0.233303, 'P4': -0.217031, 'P5': 0.091171, 'P6': -0.006719, 'P7': 0.161571, 'P8': -0.061975, 'P9': -0.046230, 'P10': 0.026253 };
+g_spherePositions['E10.Poc.dami.1.20150628.T'] = { 'name': 'E10.Poc.dami.1.20150628.T', 'color': 0, 'x': 0.046076, 'y': 0.395939, 'z': -0.119505, 'P1': 0.046076, 'P2': 0.395939, 'P3': -0.119505, 'P4': 0.181386, 'P5': -0.031400, 'P6': -0.052090, 'P7': 0.056316, 'P8': -0.072361, 'P9': -0.030328, 'P10': 0.029388 };
+g_spherePositions['E7.10.Ser.cali.3.20150622.T'] = { 'name': 'E7.10.Ser.cali.3.20150622.T', 'color': 0, 'x': 0.055965, 'y': -0.075517, 'z': -0.294387, 'P1': 0.055965, 'P2': -0.075517, 'P3': -0.294387, 'P4': -0.196339, 'P5': 0.092284, 'P6': 0.097058, 'P7': -0.031847, 'P8': 0.079159, 'P9': -0.072699, 'P10': -0.041729 };
+g_spherePositions['E7.10.Poc.dami.1.20150621.T'] = { 'name': 'E7.10.Poc.dami.1.20150621.T', 'color': 0, 'x': 0.264780, 'y': -0.256852, 'z': -0.029851, 'P1': 0.264780, 'P2': -0.256852, 'P3': -0.029851, 'P4': -0.059150, 'P5': -0.025539, 'P6': -0.031850, 'P7': 0.000245, 'P8': -0.017764, 'P9': -0.016902, 'P10': 0.063295 };
+g_spherePositions['E7.10.Poc.dami.2.20150621.T'] = { 'name': 'E7.10.Poc.dami.2.20150621.T', 'color': 0, 'x': 0.150027, 'y': -0.117841, 'z': 0.023406, 'P1': 0.150027, 'P2': -0.117841, 'P3': 0.023406, 'P4': -0.013625, 'P5': 0.128346, 'P6': -0.046821, 'P7': -0.129641, 'P8': -0.064351, 'P9': 0.074056, 'P10': 0.077036 };
+g_spherePositions['E7.10.Ser.cali.2.20150622.T'] = { 'name': 'E7.10.Ser.cali.2.20150622.T', 'color': 0, 'x': 0.016895, 'y': 0.065236, 'z': -0.369023, 'P1': 0.016895, 'P2': 0.065236, 'P3': -0.369023, 'P4': 0.339851, 'P5': 0.063655, 'P6': -0.001421, 'P7': -0.030389, 'P8': 0.039916, 'P9': 0.057382, 'P10': -0.014946 };
+g_spherePositions['E10.Poc.dami.2.20150628.T'] = { 'name': 'E10.Poc.dami.2.20150628.T', 'color': 0, 'x': 0.047782, 'y': 0.423156, 'z': 0.057949, 'P1': 0.047782, 'P2': 0.423156, 'P3': 0.057949, 'P4': -0.034646, 'P5': -0.135808, 'P6': -0.008275, 'P7': 0.075446, 'P8': -0.103004, 'P9': -0.097859, 'P10': 0.068247 };
+
+var g_ellipsesDimensions = new Array();
+var g_segments = 8, g_rings = 8, g_radius = 0.008517;
+var g_xAxisLength = 0.709728;
+var g_yAxisLength = 0.682366;
+var g_zAxisLength = 0.562749;
+var g_xMaximumValue = 0.339521;
+var g_yMaximumValue = 0.425514;
+var g_zMaximumValue = 0.193726;
+var g_xMinimumValue = -0.370207;
+var g_yMinimumValue = -0.256852;
+var g_zMinimumValue = -0.369023;
+var g_maximum = 0.425514;
+var g_pc1Label = "PC1 (26.83 %)";
+var g_pc2Label = "PC2 (23.58 %)";
+var g_pc3Label = "PC3 (10.36 %)";
+var g_number_of_custom_axes = 0;
+var g_fractionExplained = [0.268260, 0.235811, 0.103553, 0.074581, 0.050791, 0.038477, 0.036181, 0.032063, 0.026877, 0.025241];
+var g_fractionExplainedRounded = [26.83, 23.58, 10.36, 7.46, 5.08, 3.85, 3.62, 3.21, 2.69, 2.52];
+
+var g_taxaPositions = new Array();
+
+
+var g_vectorPositions = new Array();
+
+var g_comparisonPositions = new Array();
+var g_isSerialComparisonPlot = true;
+document.getElementById("logo").style.display = 'none';
+document.getElementById("logotable").style.display = 'none';
+
+ </script>
+</head>
+
+<body>
+
+<div id="overlay">
+    <div>
+    <img src="emperor_required_resources/img/emperor.png" alt="Emperor" id="small-logo"/>
+        <h1>WebGL is not enabled!</h1>
+        <p>Emperor's visualization framework is WebGL based, it seems that your system doesn't have this resource available. Here is what you can do:</p>
+        <p id="explanation"><strong>Chrome:</strong> Type "chrome://flags/" into the address bar, then search for "Disable WebGL". Disable this option if you haven't already. <em>Note:</em> If you follow these steps and still don't see an image, go to "chrome://flags/" and then search for "Override software rendering list" and enable this option.</p>
+        <p id="explanation"><strong>Safari:</strong> Open Safari's menu and select Preferences. Click on the advanced tab, and then check "Show Developer" menu. Then open the "Developer" menu and select "Enable WebGL".</p>
+        <p id="explanation"><strong>Firefox:</strong> Go to Options through Firefox > Options or Tools > Options. Go to Advanced, then General. Check "Use hardware acceleration when available" and restart Firefox.</p>
+        <p id="explanation"><strong>Other browsers:</strong> The only browsers that support WebGL are Chrome, Safari, and Firefox. Please switch to these browsers when using Emperor.</p>
+        <p id="explanation"><em>Note:</em> Once you went through these changes, reload the page and it should work!</p>
+        <p id="source">Sources: Instructions for <a href="https://www.biodigitalhuman.com/home/enabling-webgl.html">Chrome and Safari</a>, and <a href="http://www.infewbytes.com/?p=144">Firefox</a></p>
+    </div>
+</div>
+
+<div id="emperor-plot-toggle">
+    <form>
+      <div id="plottype">
+        <input id="pcoa" type="radio" id="pcoa" name="plottype" checked="checked" /><label for="pcoa">PCoA</label>
+        <input id="parallel" type="radio" id="parallel" name="plottype" /><label for="parallel">Parallel</label>
+      </div>
+    </form>
+</div>
+<div id="pcoaPlotWrapper" class="emperor-plot-wrapper">
+    <label id="pointCount" class="ontop">
+    </label>
+
+    <div id="finder" class="arrow-right">
+    </div>
+
+    <div id="labels" class="unselectable">
+    </div>
+
+    <div id="taxalabels" class="unselectable">
+    </div>
+
+    <div id="axislabels" class="axis-labels">
+    </div>
+
+    <div id="main-plot">
+    </div>
+</div>
+
+<div id="parallelPlotWrapper" class="emperor-plot-wrapper">
+</div>
+
+<div id="emperor-separator" class="emperor-separator" ondblclick="separatorDoubleClick()"></div>
+
+<div id="emperor-menu">
+    <div id="emperor-menu-tabs">
+        <ul>
+            <li><a href="#keytab">Key</a></li>
+            <li><a href="#colorby">Colors</a></li>
+            <li><a href="#showby">Visibility</a></li>
+            <li><a href="#scalingby">Scaling</a></li>
+            <li><a href="#labelby">Labels</a></li>
+            <li><a href="#axes">Axes</a></li>
+            <li><a href="#animations">Animations</a></li>
+            <li><a href="#options">Options</a></li>
+        </ul>
+        <div id="keytab" class="emperor-tab-div">
+            <form name="keyFilter">
+                <label>Filter  </label><input name="filterBox" id="searchBox" type="text" onkeyup="filterKey()"></input>
+            </form>
+            <div id="key">
+            </div>
+        </div>
+        <div id="colorby" class="emperor-tab-div">
+            <select id="colormap-drop-down" class="emperor-tab-drop-down" onchange="colorByMenuChanged()"></select>
+            
+            <br><br>
+            <select id="colorbycombo" onchange="colorByMenuChanged()" class="emperor-tab-drop-down">
+            </select>
+            <div class="list" id="colorbylist">
+            </div>
+        </div>
+        <div id="showby" class="emperor-tab-div">
+            <table class="emperor-tab-table">
+                <tr>
+                    <td>
+                        <select id="showbycombo" onchange="showByMenuChanged()" class="emperor-tab-drop-down">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="list" id="showbylist" style="height:100%%;width:100%%">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 12px; padding-right:12px;">
+                        <hr class='section-break'>
+                        <br>
+                        <label for="sphereopacity" class="text">Global Sphere Opacity</label>
+                        <label id="sphereopacity" class="slidervalue"></label>
+                        <div id="sopacityslider" class="slider-range-max"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <button id="toggle-visibility-selection-button" onClick="toggleVisibleCategories()">Invert Selected</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="scalingby" class="emperor-tab-div">
+            <table class="emperor-tab-table">
+                <tr>
+                    <td>
+                        <select id="scalingbycombo" onchange="scalingByMenuChanged()" class="emperor-tab-drop-down">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="list" id="scalingbylist" style="height:100%%;width:100%%">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 12px; padding-right:12px;">
+                        <hr class='section-break'>
+                        <br>
+                        <label for="sphereradius" class="text">Global Sphere Scale</label>
+                        <label id="sphereradius" class="slidervalue"></label>
+                        <div id="sradiusslider" class="slider-range-max"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="labelby" class="emperor-tab-div">
+            <div id="labels-top">
+                <form name="plotoptions">
+                    <input type="checkbox" onClick="toggleLabels()">Samples Label Visibility</input>
+                </form>
+                <br>
+                <label for="labelopacity" class="text">Label Opacity</label>
+                <label id="labelopacity" class="slidervalue"></label>
+                <div id="lopacityslider" class="slider-range-max"></div>
+                <div id="label-color-holder clearfix">
+                    <table class="emperor-tab-table">
+                        <tr><td><div id="labelColor" class="colorbox"></div></td><td><label>Master Label Color</label></td></tr>
+                        <br><br>
+                </table></div>
+            </div>
+            <br>
+            <select id="labelcombo" onchange="labelMenuChanged()" class="emperor-tab-drop-down">
+            </select>
+            <div class="list" id="label-list">
+            </div>
+        </div>
+        <div id="axes" class="emperor-tab-div">
+            <div id="pcoaaxes">
+                <div class="list" id="axeslist">
+                </div>
+            </div>
+        </div>
+        <div id="animations" class="emperor-tab-div">
+            <table class="emperor-tab-table-with-sliders">
+                <tr>
+                    <td>
+                        <a id="reset-button" class="media-button" href="javascript:void(0);" onclick="javascript:resetAnimation()"><img src="emperor_required_resources/img/reset.png" ></img></a>
+                        <a id="play-button" class="media-button" href="javascript:void(0);" onclick="javascript:playAnimation()"><img src="emperor_required_resources/img/play.png"></img></a>
+                        <a id="pause-button" class="media-button" href="javascript:void(0);" onclick="javascript:pauseAnimation()"><img src="emperor_required_resources/img/pause.png"></img></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="animation-speed" class="text">Speed</label>
+                        <label id="animation-speed" class="slidervalue"></label>
+                        <div id="animation-speed-slider" class="slider-range-max"></div>
+                        <div id="labelColorHolder clearfix">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br><label for="gradient-category-drop-down" class="text">Gradient Category</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="gradient-category-drop-down" class="emperor-tab-drop-down"></select><br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="trajectory-category-drop-down" class="text">Trajectory Category</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="trajectory-category-drop-down" class="emperor-tab-drop-down" onchange="colorAnimationsByCategoryChanged()"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="emperor-animation-color-selector">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="options" class="emperor-tab-div">
+            <table class="emperor-tab-table">
+                <tr><td><div id="axeslabelscolor" class="colorbox" name="axeslabelscolor"></div></td><td title="Axes Labels Color">Axes Labels Color</td></tr>
+                <tr><td><div id="axescolor" class="colorbox" name="axescolor"></div></td><td title="Axes Color Title">Axes Color</td></tr>
+                <tr><td><div id="rendererbackgroundcolor" class="colorbox" name="rendererbackgroundcolor"></div></td><td title="Background Color Title">Background Color</td></tr>
+                <tr><td colspan="2">
+                        <div id="pcoaviewoptions" class="">
+                            <form name="settingsoptionscolor">
+                            </form>
+                            <div id="pcoaoptions" class="">
+                                <form name="settingsoptions">
+                                    <input type="checkbox" onchange="toggleScaleCoordinates(this)" id="scale_checkbox" name="scale_checkbox">Scale coords by percent explained</input>
+                                </form>
+                            </div>
+                            <br><input id="reset" class="button" type="submit" value="Recenter Camera" style="" onClick="resetCamera()">
+                            <br><br>
+                            <hr class='section-break'>
+                            <br>Filename <small>(only letters, numbers, ., - and _)</small>:
+                            <br><input name="saveas_name" id="saveas_name" value="screenshot" type="text"/>
+                            <br><input id="saveas_legends" class="checkbox" type="checkbox" style=""> Create legend
+                            <input id="saveas" class="button" type="submit" value="Save as SVG" style="" onClick="saveSVG()"/>
+                            <br><br>For a PNG, simply press 'ctrl+p'.
+                            <div id="paralleloptions" class="">
+                            </div>
+                        </div>
+                        <br>
+                </td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
