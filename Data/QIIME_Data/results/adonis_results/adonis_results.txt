@@ -8,8 +8,8 @@ Number of permutations: 999
 Terms added sequentially (first to last)
 
                                 Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)    
-qiime.data$map[[opts$category]]  1    0.9488 0.94876  5.6009 0.22767  0.001 ***
-Residuals                       19    3.2185 0.16939         0.77233           
+qiime.data$map[[opts$category]]  2    1.3051 0.65257   4.104 0.31319  0.001 ***
+Residuals                       18    2.8621 0.15901         0.68681           
 Total                           20    4.1673                 1.00000           
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
