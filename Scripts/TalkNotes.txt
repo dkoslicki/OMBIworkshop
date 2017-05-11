@@ -1,0 +1,4 @@
+Metagenomics sample design
+metadata is super important
+NEED PAIRED COVARIATES (ph, temp, region, health state, etc)
+Trade off between number of samples and number of sequences per sample
