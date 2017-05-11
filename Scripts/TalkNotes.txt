@@ -1,4 +1,23 @@
 Metagenomics sample design
 metadata is super important
 NEED PAIRED COVARIATES (ph, temp, region, health state, etc)
-Trade off between number of samples and number of sequences per sample
+Trade off between number of samples and number of sequences per sample (due to multiplexing, MiSeq).
+**Samples are more important than sequence** <-- due to be able to get any sort of statistical confidence
+Unless you're specifically asking rare-microbiome questions...
+Low depth: <10K
+Analyze most abundant members
+Mid: ~40K
+inference of community composition
+High: >100K
+rare microbiome analysis
+
+MiSeq needs some non-16S sequences to make the technology work (otherwise chokes on sequence similarity)
+So one strategy is to use 12.5MB for a shotgun metagenome (or genomes from isolates) along
+with 12.5MB of the multiplexed 16S samples
+
+Microbiomes are dynamic (so let things settle down before starting your study) Don't just order
+mice and immediately start the experiment upon arrival (jet lag and facility change)
+Use negative controls (kits may not be sterile), watch out for contaminants
+Process sterile water through the same process to see what the contaminants are
+Sample storage (matter of debate) (snap freeze in liquid nitrogen and store at -80)
+
