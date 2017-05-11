@@ -21,3 +21,5 @@ Use negative controls (kits may not be sterile), watch out for contaminants
 Process sterile water through the same process to see what the contaminants are
 Sample storage (matter of debate) (snap freeze in liquid nitrogen and store at -80)
 
+
+Is "beta diversity distance matrix" actually a distance?
